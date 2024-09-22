@@ -1,0 +1,27 @@
+<div class="container mt-5">
+    <div style="text-align: center;">
+
+        @if (!accountService.currentUser()) {
+        @if (!registerMode) {
+        <h1>Hello - Pinewood Technologies</h1>
+        <p class="lead">Please sign in to view my CV</p>
+        <div class="text-center">
+            <button (click)="registerToggle()" [disabled]="accountService.currentUser()"
+                class="btn btn-primary btn-log me-2">Register</button>
+        </div>
+        }
+        @else {
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-4">
+                    <app-register (cancelRegister)="cancelRegisterMode($event)"></app-register>
+                </div>
+            </div>
+        </div>
+        }
+        }
+        @else {
+            <app-curriculum-vitae></app-curriculum-vitae>
+        }
+    </div>
+</div>
